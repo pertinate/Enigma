@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<KeyCodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <dForward>W</dForward>
+  <dBack>S</dBack>
+  <dLeft>A</dLeft>
+  <dRight>D</dRight>
+  <jump>Space</jump>
+  <crouch>LeftControl</crouch>
+  <closeInterfaces>LeftAlt</closeInterfaces>
+</KeyCodes>

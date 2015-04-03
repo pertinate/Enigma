@@ -1,0 +1,9 @@
+{
+	"dForward" : "W",
+	"dBack" : "S",
+	"dLeft" : "A",
+	"dRight" : "D",
+	"jump" : "Space",
+	"crouch" : "LeftControl",
+	"closeInterfaces" : "LeftAlt"
+}
