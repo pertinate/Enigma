@@ -9,6 +9,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
+using Pertinate.Settings;
 
 namespace Pertinate.Skills{
 	[System.Serializable]
@@ -68,6 +69,13 @@ namespace Pertinate.Skills{
 			default:break;
 			}
 		}
+		public static void Save(this Skill en){
+			switch(en){
+			case Skill.Melee:
+
+				break;
+			}
+		}
 	}
 	public class SkillHandler : MonoBehaviour{
 		public Skill skill;
@@ -104,10 +112,7 @@ namespace Pertinate.Skills{
 
 			}
 		}
-		public static void XMLLoad(){
-
-		}
-		public static void XMLSave(){
+		public static void SaveAll(){
 		}
 	}
 }

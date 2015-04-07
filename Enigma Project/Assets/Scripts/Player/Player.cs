@@ -6,16 +6,30 @@ namespace Pertinate.Player{
 		public static float maxHealth;
 		public Animator anim;
 		public CharacterController control;
+		public Rigidbody body;
 		private Vector3 moveVector;
 		public float moveSpeed = 10;
 		public float rotataion;
+		public float jumpSpeed = 10;
+		public float distToGround;
+		public bool grounded{
+			get{
+				return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+			}
+		}
 
 		private void Awake(){
 			anim = this.GetComponent<Animator>();
 			control = this.GetComponent<CharacterController>();
+			body = this.GetComponent<Rigidbody>();
+		}
+		private void Start(){
+			distToGround = body.velocity.y;
 		}
 		public void FixedUpdate(){
 			UpdateMotor();
+			if(GetJumpInput())
+				control.Move(Vector3.up * jumpSpeed);
 		}
 		private void Move(){
 			float deadZone = 0.1f;

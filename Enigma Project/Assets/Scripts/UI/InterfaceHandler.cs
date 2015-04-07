@@ -107,6 +107,12 @@ namespace Pertinate.Interface{
 					currTXT.text = Skill.Defence.currentExperience().ToString("N0");
 					nextTXT.text = Defence.instance.maxExperience.ToString("N0");
 					break;
+				case "Farming":
+					SkillInfo.SetActive(true);
+					levelTXT.text = "";
+					currTXT.text = "";
+					nextTXT.text = "";
+					break;
 				default:
 					break;
 				}
