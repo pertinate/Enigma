@@ -14,5 +14,12 @@ namespace Pertinate.Interface{
 			Interface i = (Interface)Enum.Parse(typeof(Interface), s);
 			InterfaceHandler.current = i;
 		}
+		public void EnableDisableGO(GameObject o){
+			if(o.activeSelf){
+				o.SetActive(false);
+			} else {
+				o.SetActive(true);
+			}
+		}
 	}
 }

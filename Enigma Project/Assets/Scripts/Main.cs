@@ -50,6 +50,10 @@ namespace Pertinate{
 			get{return playerTransform.position;}
 		}
 		#endregion
+		public static GameObject SkillObject{
+			get{return instance.skillObject;}
+		}
+		public GameObject skillObject;
 		#region Initialization and Finalization
 		private void Awake(){
 			Init();

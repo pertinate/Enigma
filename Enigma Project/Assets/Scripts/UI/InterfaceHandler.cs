@@ -9,7 +9,8 @@ namespace Pertinate.Interface{
 		Skill = 0,
 		Inventory = 1,
 		Quest = 2,
-		Pause = 3
+		Pause = 3,
+		Options = 4
 	}
 	public static class InterfaceExtensions{
 		public static bool isOpen(this Interface en){
@@ -56,18 +57,29 @@ namespace Pertinate.Interface{
 		public Text levelTXT;
 		public Text currTXT;
 		public Text nextTXT;
+		public Text resTXT;
 
 		public void Awake(){
 			current = Interface.None;
 			Cursor.visible = false;
 			instance = this;
+			if(resTXT != null)
+				resTXT.text = "Resolution: " + Screen.currentResolution.width.ToString() + "x" + Screen.currentResolution.height;
+			Debug.Log(Screen.resolutions.Length);
 		}
 		public void Start(){
 			InterfaceExtensions.CloseAll();
+			foreach(Resolution r in Screen.resolutions){
+				print(r.width + "x" + r.height);
+			}
 		}
 		public void Update(){
 			if(!Interface.Pause.isOpen() && Time.timeScale == 0f)
 				Time.timeScale = 1f;
+			if(!Interface.Pause.isOpen()){
+				if(Interface.Options.isOpen())
+					Interface.Options.Close();
+			}
 			CheckKeyDowns();
 			switch(current){
 			case Interface.Inventory:
@@ -91,30 +103,22 @@ namespace Pertinate.Interface{
 				Time.timeScale = 0f;
 				current = Interface.None;
 				break;
+			case Interface.Options:
+				if(!interfaces[4].activeSelf)
+					interfaces[4].SetActive(true);
+				current = Interface.None;
+				break;
 			default:break;
 			}
 			if(currSkill != null){
-				switch(currSkill.name.ToString()){
-				case "Melee":
-					SkillInfo.SetActive(true);
-					levelTXT.text = Skill.Melee.level().ToString("N0");
-					currTXT.text = Skill.Melee.currentExperience().ToString("N0");
-					nextTXT.text = Melee.instance.maxExperience.ToString("N0");
-					break;
-				case "Defence":
-					SkillInfo.SetActive(true);
-					levelTXT.text = Skill.Defence.level().ToString("N0");
-					currTXT.text = Skill.Defence.currentExperience().ToString("N0");
-					nextTXT.text = Defence.instance.maxExperience.ToString("N0");
-					break;
-				case "Farming":
-					SkillInfo.SetActive(true);
-					levelTXT.text = "";
-					currTXT.text = "";
-					nextTXT.text = "";
-					break;
-				default:
-					break;
+				foreach(SkillHandler sh in Main.SkillObject.GetComponents<SkillHandler>()){
+					SkillType s = sh.skill;
+					if(s.ToString() == currSkill.name){
+						SkillInfo.SetActive(true);
+						levelTXT.text = sh.realLevel.ToString();
+						currTXT.text = sh.realLevel.ToString();
+						nextTXT.text = sh.nextLevelExperience(sh.realLevel).ToString();
+					}
 				}
 			} else {
 				SkillInfo.SetActive(false);
