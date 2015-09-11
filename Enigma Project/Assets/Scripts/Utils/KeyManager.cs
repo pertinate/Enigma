@@ -9,6 +9,13 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
+/*
+ *   THIS IS COPYRIGHTED BY
+ *      NICHOLAS EVANS
+ * 	 IF YOU USE THIS THEN
+ *   PLEASE CREDIT ME
+ */
+
 namespace Pertinate.Utils{
 	public class KeyManager {
 		public static Dictionary<string, KeyCode> keyCodes = new Dictionary<string, KeyCode>();

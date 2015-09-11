@@ -58,6 +58,7 @@ namespace Pertinate.Interface{
 		public Text currTXT;
 		public Text nextTXT;
 		public Text resTXT;
+		public Text windTXT;
 
 		public void Awake(){
 			current = Interface.None;
@@ -65,13 +66,9 @@ namespace Pertinate.Interface{
 			instance = this;
 			if(resTXT != null)
 				resTXT.text = "Resolution: " + Screen.currentResolution.width.ToString() + "x" + Screen.currentResolution.height;
-			Debug.Log(Screen.resolutions.Length);
 		}
 		public void Start(){
 			InterfaceExtensions.CloseAll();
-			foreach(Resolution r in Screen.resolutions){
-				print(r.width + "x" + r.height);
-			}
 		}
 		public void Update(){
 			if(!Interface.Pause.isOpen() && Time.timeScale == 0f)

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 namespace Pertinate.Player{
 	public class Player : CharacterInput {
@@ -27,6 +28,8 @@ namespace Pertinate.Player{
 			distToGround = body.velocity.y;
 		}
 		public void FixedUpdate(){
+			if(body.velocity.y < -0.2)
+				Debug.Log("falling");
 			UpdateMotor();
 			if(GetJumpInput())
 				control.Move(Vector3.up * jumpSpeed);
@@ -51,7 +54,7 @@ namespace Pertinate.Player{
 			}
 		}
 		private void SnapToCam(){
-			if(GetDirAxis("vertical") < 0 || GetDirAxis("vertical") > 0){
+			if(GetDirAxis("vertical") < 0 || GetDirAxis("vertical") > 0 || GetDirAxis("horizontal") < 0 || GetDirAxis("horizontal") > 0){
 				transform.rotation = Quaternion.Euler(transform.eulerAngles.x, Camera.main.transform.rotation.eulerAngles.y, transform.eulerAngles.z);
 			}
 		}

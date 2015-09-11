@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<List xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Quests>
+    <Quest name="wot">
+      <description>woooot</description>
+      <currentProgression>5</currentProgression>
+      <totalProgression>10</totalProgression>
+      <completed>false</completed>
+    </Quest>
+  </Quests>
+</List>
