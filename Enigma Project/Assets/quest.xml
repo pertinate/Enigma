@@ -3,7 +3,7 @@
   <Quests>
     <Quest name="wot">
       <description>woooot</description>
-      <currentProgression>5</currentProgression>
+      <currentProgression>6</currentProgression>
       <totalProgression>10</totalProgression>
       <completed>false</completed>
     </Quest>

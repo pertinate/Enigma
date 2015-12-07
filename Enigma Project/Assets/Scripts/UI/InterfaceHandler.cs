@@ -119,6 +119,7 @@ namespace Pertinate.Interface{
 				}
 			} else {
 				SkillInfo.SetActive(false);
+                
 			}
 		}
 		public void SendInfo(GameObject go){
